@@ -25,13 +25,7 @@
 #include "MOD-RS485-ISO.h"
 
 
-uint8_t MOD_RS485_ISO::TX_ENABLED   = (1 << 1);
-uint8_t MOD_RS485_ISO::TX_DISABLED  = (0 << 1);
-uint8_t MOD_RS485_ISO::RX_ENABLED   = (1 << 0);
-uint8_t MOD_RS485_ISO::RX_DISABLED  = (0 << 0);
 
-uint8_t MOD_RS485_ISO::PASS_MODE    = 0x00;
-uint8_t MOD_RS485_ISO::BRIDGE_MODE  = 0x01;
 
 /**
  * @brief MOD_RS485_ISO
@@ -42,7 +36,7 @@ uint8_t MOD_RS485_ISO::BRIDGE_MODE  = 0x01;
 MOD_RS485_ISO::MOD_RS485_ISO(uint8_t address) :
     __address(address)
 {
-
+	Wire.begin();
 }
 
 /**
@@ -129,9 +123,9 @@ void MOD_RS485_ISO::setBaudrate(baudrate_t baud)
  *
  * @return          Current set baudrate
  */
-MOD_RS485_ISO::baudrate_t MOD_RS485_ISO::getBaudrate(void)
+baudrate_t MOD_RS485_ISO::getBaudrate(void)
 {
-    return __readRegister(REGISTER_BR);
+    return (baudrate_t) __readRegister(REGISTER_BR);
 }
 
 /**
@@ -187,7 +181,7 @@ void MOD_RS485_ISO::setAddress(uint8_t address)
  */
 void MOD_RS485_ISO::__writeRegister(uint8_t reg, uint8_t data)
 {
-    Wire.begin();
+    //Wire.begin();
     Wire.beginTransmission(__address);
     Wire.write(reg);
     Wire.write(data);
@@ -203,7 +197,7 @@ void MOD_RS485_ISO::__writeRegister(uint8_t reg, uint8_t data)
  */
 uint8_t MOD_RS485_ISO::__readRegister(uint8_t reg)
 {
-    Wire.begin();
+    //Wire.begin();
     Wire.beginTransmission(__address);
     Wire.write(reg);
     Wire.endTransmission();

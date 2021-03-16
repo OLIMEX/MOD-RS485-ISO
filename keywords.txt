@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-MOD_RS485_ISO	KEYWORD1	MOD_RS485_ISO
+MOD_RS485_ISO	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)

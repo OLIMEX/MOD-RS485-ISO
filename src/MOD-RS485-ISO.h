@@ -36,38 +36,53 @@
 #define REGISTER_TX         0x26
 #define REGISTER_RX         0x27
 
+#if 1
+#define	TX_ENABLED   (1 << 1)
+#define	TX_DISABLED  (0 << 1)
+#define	RX_ENABLED   (1 << 0)
+#define	RX_DISABLED  (0 << 0)
+#else
+#define	TX_ENABLED   0x10
+#define	TX_DISABLED  0x00
+#define	RX_ENABLED   0x01
+#define	RX_DISABLED  0x00
+#endif
+
+#define	PASS_MODE    0x00
+#define	BRIDGE_MODE  0x01
+
+/* Define available baudrates */
+typedef enum {
+    UART_B50 = 0,
+    UART_B75,
+    UART_B110,
+    UART_B134,
+    UART_B150,
+    UART_B300,
+    UART_B600,
+    UART_B1200,
+    UART_B1800,
+    UART_B2400,
+    UART_B4800,
+    UART_B7200,
+    UART_B9600,
+    UART_B14400,
+    UART_B19200,
+    UART_B38400,
+    UART_B57600,
+    UART_B76800,
+    UART_B115200,
+    UART_B128000,
+    UART_B230400,
+    UART_B500000,
+    UART_B576000,
+    UART_B1000000
+} baudrate_t ;
 
 class MOD_RS485_ISO
 {
 
 public:
-    /* Define available baudrates */
-    typedef enum {
-        UART_B50 = 0,
-        UART_B75,
-        UART_B110,
-        UART_B134,
-        UART_B150,
-        UART_B300,
-        UART_B600,
-        UART_B1200,
-        UART_B1800,
-        UART_B2400,
-        UART_B4800,
-        UART_B7200,
-        UART_B9600,
-        UART_B14400,
-        UART_B19200,
-        UART_B38400,
-        UART_B57600,
-        UART_B76800,
-        UART_B115200,
-        UART_B128000,
-        UART_B230400,
-        UART_B500000,
-        UART_B576000,
-        UART_B1000000
-    } baudrate_t ;
 
     MOD_RS485_ISO(uint8_t address = 0x22);
 
@@ -87,15 +102,6 @@ public:
 
     void sendData(uint8_t *data, uint8_t length);
     void readData(uint8_t *data, uint8_t length);
-
-
-    static uint8_t TX_ENABLED;
-    static uint8_t TX_DISABLED;
-    static uint8_t RX_ENABLED;
-    static uint8_t RX_DISABLED;
-
-    static uint8_t PASS_MODE;
-    static uint8_t BRIDGE_MODE;
 
 private:
     uint8_t __address;
