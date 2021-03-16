@@ -4,6 +4,9 @@ This library is for control MOD-RS485-ISO module.
 For more information on device please check site:
 https://www.olimex.com/Products/Modules/Interface/MOD-RS485-ISO/open-source-hardware
 
+Download the whole repository as an archive and load the library
+in Arduino IDE from Sketch -> Inlcude Library -> Add .ZIP library...
+
 
 == License ==
 
