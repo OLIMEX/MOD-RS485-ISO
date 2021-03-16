@@ -7,6 +7,8 @@ https://www.olimex.com/Products/Modules/Interface/MOD-RS485-ISO/open-source-hard
 Download the whole repository as an archive and load the library
 in Arduino IDE from Sketch -> Inlcude Library -> Add .ZIP library...
 
+Then the examples would be visible in File -> Examples (under the correct sub-group). 
+
 
 == License ==
 
